@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: springboot
+  profiles:
+    #启用的环境
+    active: test
+
+  main:
+    # 遇到重复Bean的时候覆盖模式
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  output:
+    ansi:
+      #日志输出 彩色
+      enabled: always
+
+mybatis:
+  type-aliases-package: com.xiayu.springboot.domain
+  mapper-locations: classpath:mapper/*.xml
+
+server:
+  port: 8888
