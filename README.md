@@ -1,6 +1,64 @@
-## 展示
+## 使用
 
-![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/rec.jpg?raw=true)
+前端使用的是HBuilderX导入项目后终端输入npm run dev即可
+
+后端导入idea
+
+数据库
+
+```mysql
+CREATE DATABASE `news_recommendation_system` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+CREATE TABLE `news` (
+  `news_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '新闻主键',
+  `news_title` varchar(255) DEFAULT '' COMMENT '新闻标题',
+  `news_content` text COMMENT '新闻内容',
+  `type_id` int(11) DEFAULT NULL COMMENT '新闻类型',
+  `news_creattime` varchar(20) DEFAULT NULL COMMENT '新闻发布时间',
+  `news_recourse` varchar(20) DEFAULT NULL COMMENT '新闻来源',
+  `news_link` varchar(255) DEFAULT NULL COMMENT '新闻链接',
+  `heat_num` int(11) DEFAULT '0',
+  PRIMARY KEY (`news_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1509 DEFAULT CHARSET=utf8 COMMENT='新闻信息表';
+
+CREATE TABLE `newstype` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='新闻类型表';
+
+CREATE TABLE `score` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL COMMENT '用户id',
+  `nid` int(11) DEFAULT NULL COMMENT '新闻id',
+  `score` int(11) DEFAULT NULL COMMENT '分数：1~5分范围',
+  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`,`nid`),
+  KEY `score_index2` (`uid`),
+  KEY `score_index3` (`nid`)
+) ENGINE=InnoDB AUTO_INCREMENT=192 DEFAULT CHARSET=utf8 COMMENT='评分表';
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名称',
+  `user_password` varchar(255) DEFAULT NULL COMMENT '用户密码',
+  `prefer` varchar(255) DEFAULT '"null"',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+CREATE TABLE `collection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL COMMENT '用户id',
+  `nid` int(11) DEFAULT NULL COMMENT '新闻id',
+  `collection` int(10) DEFAULT NULL,
+  `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='收藏表';
+
+```
 
 
 
@@ -256,3 +314,31 @@ k-means聚类的工作流程
 ### 5.02 项目到此为止了
 
 完成了新闻推荐系统的基本功能包括kmeans推荐，基于用户和物品的协同过滤推荐。
+
+## 展示
+
+### 后端接口
+
+#### 推荐模块
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/rec.jpg?raw=true)
+
+#### 接口调用
+
+利用Java的插件（RestServices）来测试接口真的非常方便
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/restServices.jpg?raw=true)
+
+### 前端页面
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/page1.jpg?raw=true)
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/page2.jpg?raw=true)
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/page3.jpg?raw=true)
+
+### 数据库
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/database.jpg?raw=true)
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/database2.jpg?raw=true)
