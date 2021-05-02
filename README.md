@@ -1,3 +1,9 @@
+## 展示
+
+![rec.jpg](https://github.com/MouMangTai/newsRecommendationSystem/blob/main/img/rec.jpg?raw=true)
+
+
+
 ## 我的毕业设计记录
 
 ### 4.03  找数据集的一晚上（失败）
